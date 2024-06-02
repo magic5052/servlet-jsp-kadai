@@ -9,7 +9,13 @@
 
 <body>
 	<a href="<%=request.getContextPath()%>/j2s?name=侍太郎">名前「侍太郎」をServletに送信</a>
-	<p>受け取った値は: ${name}</p>
+	<!-- Display the parameter if it exists -->
+	<%
+	String name = (String) request.getAttribute("name");
+	if (name != null) {
+		out.println("<p>Servletから受信しました: " + name + "さん、こんにちは！</p>");
+	}
+	%>
 </body>
 
 </html>
